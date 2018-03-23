@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using BookBash.Views;
 using Xamarin.Forms;
 
 namespace BookBash
@@ -13,7 +9,8 @@ namespace BookBash
 		{
 			InitializeComponent();
 
-			MainPage = new BookBash.MainPage();
+//			MainPage = new BookBash.MainPage();
+		    MainPage = new NavigationPage(new AccountCreatePage());
 		}
 
 		protected override void OnStart ()
