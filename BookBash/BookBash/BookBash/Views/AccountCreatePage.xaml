@@ -20,7 +20,16 @@
                 Text="Password"
                 TextColor="Black" />
             <Entry IsPassword="True" Placeholder="Enter Password" />
-            <Button Text="Create Account" />
+            <Button Command="{Binding RegisterButtonCommand}" Text="Create Account" />
+            <Label
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text="Exisitng Account?  Login Here."
+                TextColor="Blue">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToLoginCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
 
         </StackLayout>
     </ContentPage.Content>

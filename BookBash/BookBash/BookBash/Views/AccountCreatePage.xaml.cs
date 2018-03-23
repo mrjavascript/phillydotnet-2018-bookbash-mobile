@@ -1,4 +1,5 @@
 ﻿using System;
+using BookBash.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,6 +11,7 @@ namespace BookBash.Views
 		public AccountCreatePage ()
 		{
 			InitializeComponent ();
+		    BindingContext = new AccountCreateViewModel(Navigation);
 		}
 	}
 }
