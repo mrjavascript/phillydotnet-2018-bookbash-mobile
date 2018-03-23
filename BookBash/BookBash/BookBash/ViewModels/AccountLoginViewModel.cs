@@ -1,8 +1,9 @@
 ﻿using BookBash.ViewModels.Base;
+using Prism.Mvvm;
 
 namespace BookBash.ViewModels
 {
-    public class AccountLoginViewModel : ViewModelBase
+    public class AccountLoginViewModel : BindableBase
     {
         
     }

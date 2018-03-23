@@ -1,8 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="BookBash.Views.AccountCreatePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:utility="clr-namespace:BookBash.Utility;assembly=BookBash"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BindingContext="{Binding Source={x:Static utility:DesignTimeViewModelLocator.AccountCreateViewModel}}">
     <ContentPage.Content>
         <StackLayout>
 

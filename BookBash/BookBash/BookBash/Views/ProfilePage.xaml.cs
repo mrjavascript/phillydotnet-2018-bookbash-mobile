@@ -15,7 +15,6 @@ namespace BookBash.Views
 		public ProfilePage ()
 		{
 			InitializeComponent ();
-		    BindingContext = new ProfileViewModel();
 		}
 	}
 }

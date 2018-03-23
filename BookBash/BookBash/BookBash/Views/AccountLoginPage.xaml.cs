@@ -15,7 +15,6 @@ namespace BookBash.Views
 		public AccountLoginPage ()
 		{
 			InitializeComponent ();
-		    BindingContext = new AccountLoginViewModel();
 		}
 	}
 }

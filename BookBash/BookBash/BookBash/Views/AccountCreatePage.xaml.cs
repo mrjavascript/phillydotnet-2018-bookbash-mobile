@@ -11,7 +11,6 @@ namespace BookBash.Views
 		public AccountCreatePage ()
 		{
 			InitializeComponent ();
-		    BindingContext = new AccountCreateViewModel(Navigation);
 		}
 	}
 }
