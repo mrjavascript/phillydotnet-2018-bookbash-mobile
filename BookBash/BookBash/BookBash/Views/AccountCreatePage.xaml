@@ -1,12 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BookBash.Views.AccountCreatePage">
+<ContentPage
+    x:Class="BookBash.Views.AccountCreatePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+            <Label
+                FontSize="40"
+                Text="Account Create"
+                TextColor="Black" />
+            <Label
+                FontSize="20"
+                Text="User Name"
+                TextColor="Black" />
+            <Entry IsPassword="False" Placeholder="Enter User name" />
+            <Label
+                FontSize="20"
+                Text="Password"
+                TextColor="Black" />
+            <Entry IsPassword="True" Placeholder="Enter Password" />
+            <Button Text="Create Account" />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
