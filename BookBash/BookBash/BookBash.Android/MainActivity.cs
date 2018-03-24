@@ -20,7 +20,8 @@ namespace BookBash.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+            LoadApplication(new App(new AndroidInitializer()));
+
         }
     }
 }
