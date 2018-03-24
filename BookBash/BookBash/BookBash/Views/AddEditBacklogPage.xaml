@@ -6,14 +6,52 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:utility="clr-namespace:BookBash.Utility;assembly=BookBash"
     prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{Binding Theme}"
     BindingContext="{Binding Source={x:Static utility:DesignTimeViewModelLocator.AddEditBacklogViewModel}}">
-
     <ContentPage.Content>
         <StackLayout>
-            <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="Add edit page!"
-                VerticalOptions="CenterAndExpand" />
+            <StackLayout IsVisible="{Binding IsAdd}">
+                <StackLayout IsVisible="{Binding ShowIsbnSearchForm}">
+                    <Label Text="ISBN" />
+                    <Entry Text="{Binding Isbn, Mode=TwoWay}" />
+                    <Button Command="{Binding SearchIsbnCommand}" Text="Search" />
+                </StackLayout>
+                <StackLayout IsVisible="{Binding ShowRestOfAddForm}">
+                    <Label Text="{Binding BookName}" />
+                    <Label Text="Status" />
+                    <Picker
+                        ItemDisplayBinding="{Binding TypeName}"
+                        ItemsSource="{Binding BacklogStatuses}"
+                        SelectedIndex="{Binding SelectedPickerIndex}"
+                        SelectedItem="{Binding BacklogStatus, Mode=TwoWay}" />
+                    <Label Text="Rating" />
+                    <Slider
+                        Maximum="5.0"
+                        Minimum="0.0"
+                        Value="{Binding Rating, Mode=TwoWay}" />
+                    <Button Command="{Binding SaveItemCommand}" Text="Add Record" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout IsVisible="{Binding IsEdit}">
+                <Label Text="Record ID" />
+                <Label Text="{Binding RecordId}" />
+                <Label Text="Book Name" />
+                <Label Text="{Binding BookName}" />
+                <Label Text="Book ID" />
+                <Label Text="{Binding BookId}" />
+                <Label Text="Status" />
+                <Picker
+                    ItemDisplayBinding="{Binding TypeName}"
+                    ItemsSource="{Binding BacklogStatuses}"
+                    SelectedIndex="{Binding SelectedPickerIndex}"
+                    SelectedItem="{Binding BacklogStatus, Mode=TwoWay}" />
+                <Label Text="Rating" />
+                <Slider
+                    Maximum="5.0"
+                    Minimum="0.0"
+                    Value="{Binding Rating, Mode=TwoWay}" />
+                <Button Command="{Binding SaveItemCommand}" Text="Edit Record" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

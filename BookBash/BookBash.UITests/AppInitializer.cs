@@ -14,6 +14,11 @@ namespace BookBash.UITests
             {
                 return ConfigureApp
                     .Android
+                    .DeviceSerial("YOUR_ANDROID_DEVICE_ID_HERE")
+//                    .ApkFile("C:\\Users\\mikem\\source\\repos\\book-bash-mobile-2\\BookBash\\BookBash\\BookBash.Android\\bin\\Release\\com.companyname.BookBash.apk")
+                    .InstalledApp("com.companyname.BookBash")
+                    .PreferIdeSettings()
+//                    .InstalledApp("com.companyname.BookBash")
                     .StartApp();
             }
 

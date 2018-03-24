@@ -6,35 +6,64 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:utility="clr-namespace:BookBash.Utility;assembly=BookBash"
     prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{Binding Theme}"
     BindingContext="{Binding Source={x:Static utility:DesignTimeViewModelLocator.AccountCreateViewModel}}">
     <ContentPage.Content>
-        <StackLayout>
-
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Image Source="logo.png" />
             <Label
+                AutomationId="HeaderText"
                 FontSize="40"
                 Text="Account Create"
                 TextColor="Black" />
             <Label
+                AutomationId="ErrorMessage"
+                FontSize="20"
+                IsVisible="{Binding HasErrors, Mode=TwoWay}"
+                Text="{Binding ErrorMessage, Mode=TwoWay}"
+                TextColor="Red" />
+            <Label
                 FontSize="20"
                 Text="User Name"
                 TextColor="Black" />
-            <Entry IsPassword="False" Placeholder="Enter User name" />
+            <Entry
+                IsPassword="False"
+                Placeholder="Enter User Name"
+                Text="{Binding UserName, Mode=TwoWay}" />
+            <Label
+                FontSize="20"
+                Text="Email Address"
+                TextColor="Black" />
+            <Entry
+                IsPassword="False"
+                Placeholder="Enter Email Address"
+                Text="{Binding EmailAddress, Mode=TwoWay}" />
             <Label
                 FontSize="20"
                 Text="Password"
                 TextColor="Black" />
-            <Entry IsPassword="True" Placeholder="Enter Password" />
-            <Button Command="{Binding RegisterButtonCommand}" Text="Create Account" />
+            <Entry
+                IsPassword="True"
+                Placeholder="Enter Password"
+                Text="{Binding Password, Mode=TwoWay}" />
+            <Button
+                AutomationId="CreateAccountButton"
+                Command="{Binding RegisterButtonCommand}"
+                Text="Create Acccount" />
+            <Button
+                BackgroundColor="DarkBlue"
+                Command="{Binding FacebookCommand}"
+                Text="Login With Facebook"
+                TextColor="White" />
             <Label
                 FontSize="20"
                 HorizontalOptions="Center"
-                Text="Exisitng Account?  Login Here."
+                Text="Existing account?  Login here."
                 TextColor="Blue">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GoToLoginCommand}" />
                 </Label.GestureRecognizers>
             </Label>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

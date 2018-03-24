@@ -14,7 +14,8 @@ namespace BookBash.Views
 	{
 		public AddEditBacklogPage ()
 		{
-			InitializeComponent ();
-		}
+		    InitializeComponent();
+//            BindingContext = new AddEditBacklogViewModel(Navigation);
+        }
 	}
 }

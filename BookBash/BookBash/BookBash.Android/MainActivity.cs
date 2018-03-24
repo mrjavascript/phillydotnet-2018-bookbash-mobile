@@ -1,18 +1,15 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 
 namespace BookBash.Droid
 {
-    [Activity(Label = "BookBash", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    //    [Activity(Label = "BookBash", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "BookBash", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = false,
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        protected override void OnCreate(Bundle bundle)
+        protected override async void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
@@ -22,6 +19,14 @@ namespace BookBash.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
 
+            // Locks Screen in Portrait Mode
+            RequestedOrientation = ScreenOrientation.Portrait;
+
+            //
+            //  If clicks from the widget...
+            if (Intent.GetStringExtra(WidgetAction.Extra) == null) return;
+            if (Intent.GetStringExtra(WidgetAction.Extra) != WidgetAction.Dashboard) return;
+            await ((App)Xamarin.Forms.Application.Current).HandleWidgetAction();
         }
     }
 }

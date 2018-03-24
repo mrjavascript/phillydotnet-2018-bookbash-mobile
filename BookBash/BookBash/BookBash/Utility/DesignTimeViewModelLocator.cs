@@ -8,8 +8,7 @@ namespace BookBash.Utility
         public static AccountLoginViewModel AccountLoginViewModel => null;
         public static ViewBacklogViewModel ViewBacklogViewModel => null;
         public static AddEditBacklogViewModel AddEditBacklogViewModel => null;
-        public static ProfileViewModel ProfileViewModel => null;
-//        public static FacebookViewModel FacebookViewModel => null;
+        public static ProfileVIewModel ProfileVIewModel => null;
+        public static FacebookViewModel FacebookViewModel => null;
     }
-
 }

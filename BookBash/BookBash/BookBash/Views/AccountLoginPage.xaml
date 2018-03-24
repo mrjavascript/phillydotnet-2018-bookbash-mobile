@@ -6,13 +6,46 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:utility="clr-namespace:BookBash.Utility;assembly=BookBash"
     prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{Binding Theme}"
     BindingContext="{Binding Source={x:Static utility:DesignTimeViewModelLocator.AccountLoginViewModel}}">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Image Source="logo.png" />
             <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="Account login page!"
-                VerticalOptions="CenterAndExpand" />
+                FontSize="40"
+                Text="Login"
+                TextColor="Black" />
+            <Label
+                FontSize="20"
+                IsVisible="{Binding HasErrors, Mode=TwoWay}"
+                Text="{Binding ErrorMessage, Mode=TwoWay}"
+                TextColor="Red" />
+            <Label
+                FontSize="20"
+                Text="User Name"
+                TextColor="Black" />
+            <Entry
+                IsPassword="False"
+                Placeholder="Enter User Name"
+                Text="{Binding UserName, Mode=TwoWay}" />
+            <Label
+                FontSize="20"
+                Text="Password"
+                TextColor="Black" />
+            <Entry
+                IsPassword="True"
+                Placeholder="Enter Password"
+                Text="{Binding Password, Mode=TwoWay}" />
+            <Button Command="{Binding LoginButtonClickCommand}" Text="Login" />
+            <Label
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text="Don't have account?  Back to creation page."
+                TextColor="Blue">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ReturnToHomeCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

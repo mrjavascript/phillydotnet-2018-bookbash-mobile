@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookBash.ViewModels;
+﻿using BookBash.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,7 +9,8 @@ namespace BookBash.Views
 	{
 		public AccountLoginPage ()
 		{
-			InitializeComponent ();
-		}
+		    InitializeComponent();
+//            BindingContext = new AccountLoginViewModel(Navigation);
+        }
 	}
 }

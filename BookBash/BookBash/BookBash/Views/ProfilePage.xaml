@@ -6,13 +6,27 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:utility="clr-namespace:BookBash.Utility;assembly=BookBash"
     prism:ViewModelLocator.AutowireViewModel="True"
-    BindingContext="{Binding Source={x:Static utility:DesignTimeViewModelLocator.ProfileViewModel}}">
+    BackgroundColor="{Binding Theme}"
+    BindingContext="{Binding Source={x:Static utility:DesignTimeViewModelLocator.ProfileVIewModel}}">
     <ContentPage.Content>
         <StackLayout>
+            <!--  <Label  -->
+            <!--  HorizontalOptions="CenterAndExpand"  -->
+            <!--  Text="Profile Page"  -->
+            <!--  VerticalOptions="CenterAndExpand" />  -->
+            <Label Text="Change Password" />
             <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="Profile Page!"
-                VerticalOptions="CenterAndExpand" />
+                IsVisible="{Binding HasErrors}"
+                Text="{Binding Errors}"
+                TextColor="Red" />
+            <Label Text="New Password" />
+            <Entry Text="{Binding NewPassword, Mode=TwoWay}" />
+            <Label Text="New Password Confirm" />
+            <Entry Text="{Binding NewPasswordConfirm, Mode=TwoWay}" />
+            <Button Command="{Binding ChangePasswordCommand}" Text="Change Password" />
+            <Label Text="DARK MODE SWITCH" />
+            <Switch IsToggled="{Binding IsDarkMode, Mode=TwoWay}" Toggled="OnDarkModeToggle" />
+            <Button Command="{Binding LogOutButtonCommand}" Text="Log Out" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

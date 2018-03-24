@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage
     x:Class="BookBash.Views.ViewBacklogPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -6,17 +7,55 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:utility="clr-namespace:BookBash.Utility;assembly=BookBash"
     prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{Binding Theme}"
     BindingContext="{Binding Source={x:Static utility:DesignTimeViewModelLocator.ViewBacklogViewModel}}">
     <!--    <ContentPage.BindingContext>-->
     <!--        <viewModels:ViewBacklogViewModel />-->
     <!--    </ContentPage.BindingContext>-->
-
     <ContentPage.Content>
         <StackLayout>
-            <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="View Backlog Page!"
-                VerticalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal">
+                <Entry Text="{Binding Filter}" />
+                <Button Command="{Binding FilterBacklogCommand, Mode=TwoWay}" Text="Filter" />
+                <Button Command="{Binding SortBacklogCommand}" Text="Sort" />
+                <Button Command="{Binding AddNewItemCommand}" Text="Add" />
+            </StackLayout>
+            <StackLayout>
+                <Label IsVisible="{Binding ShowNoRecords}" Text="No items :(" />
+                <ListView
+                    HasUnevenRows="True"
+                    IsPullToRefreshEnabled="True"
+                    IsRefreshing="{Binding IsLoading}"
+                    IsVisible="{Binding ShowListView}"
+                    ItemsSource="{Binding Backlog}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <!--
+                                        CommandParameter is the command to pass to the clicked event handler. Because these are menu items,
+                                        not cells managed by the ListView, CommandParameter is neccesary to determine which
+                                        cell the context action was taken on.
+                                    -->
+                                    <MenuItem
+                                        Clicked="OnMore"
+                                        CommandParameter="{Binding .}"
+                                        Text="More" />
+                                    <MenuItem
+                                        Clicked="OnDelete"
+                                        CommandParameter="{Binding .}"
+                                        IsDestructive="true"
+                                        Text="Delete" />
+                                </ViewCell.ContextActions>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Book.BookTitle}" />
+                                    <Label Text="{Binding Rating}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
